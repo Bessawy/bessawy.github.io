@@ -23,6 +23,7 @@ body {
 
 .container2 {
   background-image: url("avatar.png");
+  background-size: cover ;
   height: 10em;
   width: 10em;
 }
