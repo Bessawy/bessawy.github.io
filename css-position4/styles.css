@@ -1,3 +1,81 @@
 body {
   background: white;
 }
+
+.grid {
+  display: grid;
+  grid-template-areas: 
+  "dim1 dim3 dim3 dim4 dim5"
+  "dim2 dim3 dim3 dim4 dim5";
+  gap: 10px;
+}
+
+.item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box{
+  margin: 1em 1em;
+  position: relative;
+}
+
+.diamond{
+  text-align: center;
+  transform: rotate(-45deg);
+  background-color: white;
+  width: 1em;
+}
+
+.diamond p{
+  transform: rotate(45deg);
+}
+
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+
+  background-color: black;
+  color: white;
+  width: 3em;
+  text-align: center;
+  border-radius: 20%;
+  border: solid 0.1em white;
+  left: 2em;
+  top: 2em;
+
+}
+
+.box:hover .tooltip
+{
+  visibility: visible;
+
+}
+
+.item:nth-child(1) {
+  background-color: #963DC3;
+  grid-area: dim1;
+}
+
+.item:nth-child(2) {
+  background-color: #BC5E3F;
+  grid-area: dim2;
+}
+
+.item:nth-child(3) {
+  background-color: #7AC74E;
+  grid-area: dim3;
+}
+
+.item:nth-child(4) {
+  background-color: #59A6C7;
+  grid-area: dim4;
+}
+
+.item:nth-child(5) {
+  background-color: rgb(177, 17, 118);
+  grid-area: dim5;
+}

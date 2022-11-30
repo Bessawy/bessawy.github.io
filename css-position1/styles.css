@@ -1,21 +1,16 @@
-*{
-  margin: 0px;
-  padding: 0px;
-}
-
-body {
+body{
   background: white;
 }
 
-.container {
+.container{
   background-color: bisque;
-  height: 20em; /* vh vw em rem */
+  height: 20em;
   width: 10em;
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-
-
-
+.container p{
+  font-weight: 700;
+}
