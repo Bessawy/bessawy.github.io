@@ -1,0 +1,173 @@
+@use "variables/colors";
+@use "inheritance/font";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.buynow-bar__logo-link {
+  width: 4em;
+  height: 4em;
+  position: absolute;
+  left: 1em;
+  background-image: url("../../../Images/medical-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.buynow-bar__button--buynow {
+  background-color: colors.$button-buynow-background;
+  color: colors.$button-buynow-color;
+  width: 8em;
+  height: 3em;
+  border-radius: 0.5em;
+  border-color: colors.$button-buynow-background;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background-color: colors.$button-buynow-background-hover;
+    border-color: colors.$button-buynow-background-hover;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translate(0.2em, 0.2em);
+    transition: all 0.1s linear;
+  }
+}
+
+.nav__button--search {
+  background-color: colors.$body-background;
+  border: 0px;
+  cursor: pointer;
+}
+
+.main__section--current-articles button {
+  @include font.button-current-articles(rgb(3, 3, 3));
+  position: absolute;
+  margin: 2em 2em;
+  padding: 0.2em 0.5em;
+  border-radius: 0.6em 0.6em;
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
+}
+
+.main__section--ending form {
+  margin-right: 14em;
+  display: flex;
+  justify-content: center;
+  margin-left: 12em;
+
+  .main__section--ending__button--load {
+    background-color: colors.$loadmore-bar-color;
+    height: 10vh;
+    width: 75vw;
+    border-radius: 2em 2em;
+    color: colors.$text-main-color;
+    border-width: 0.1em;
+    letter-spacing: 0.2em;
+    transition: all 0.2s linear;
+
+    &:hover {
+      transition: all 0.2s linear;
+      background-color: rgb(233, 178, 75);
+      color: colors.$body-background;
+    }
+  }
+}
+
+.main__section--ending__email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 2em;
+
+  p {
+    margin: 0.5em 10em;
+    @include font.title-current-articles;
+  }
+
+  .typewriter {
+    margin: 1em 0em;
+    background: colors.$body-background;
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      color: #fff;
+      font-family: monospace;
+      overflow: hidden;
+      padding-right: 0.2em;
+      border-right: 0.15em solid colors.$body-background; 
+      white-space: nowrap; 
+      margin: 0 auto; 
+      letter-spacing: 0.1em; 
+      animation: typing 4s steps(30, end) infinite, blink-caret 0.5s step-end infinite;
+      
+    }
+  }
+
+  .main__section--ending__email__from{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    input{
+      background-color: transparent;
+      text-align: center;
+      border-color: transparent;
+      border-bottom: 0.1em solid white;
+      margin: 2em 0;
+      font-family: monospace;
+      font-weight: 600;
+      padding-bottom: 0.5em;
+      width: 50vh;
+      font-size: 1.5em;
+      transition: all 1s ease-in-out;
+
+      &:focus{
+        transition: all 1s ease-in-out;
+        outline: none;
+        width: 60vh;
+      }
+    }
+
+    button{
+      background-color: colors.$loadmore-bar-color;
+      height: 8vh;
+      width: 15vw;
+      border-radius: 2em 2em;
+      color: colors.$text-main-color;
+      border-width: 0.1em;
+      letter-spacing: 0.2em;
+      transition: all 0.2s linear;
+  
+      &:hover {
+        transition: all 0.2s linear;
+        background-color: rgb(233, 178, 75);
+        color: colors.$body-background;
+      }
+
+    }
+
+  }
+}
+
+@keyframes typing {
+  0% { width: 0 }
+  40% { width: 100% }
+  60% { width: 100% }
+  100%{ width: 0 }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(252, 252, 252) }
+}
+

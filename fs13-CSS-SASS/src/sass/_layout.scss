@@ -1,0 +1,614 @@
+@use "variables/colors";
+@use "inheritance/font";
+@import "inheritance/layout";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: colors.$body-background;
+}
+
+.buynow-bar {
+  height: 4em;
+  top: 0%;
+  width: 100%;
+  position: fixed;
+  background-color: colors.$buynow-bar-color;
+  border-bottom: 2px solid black;
+  z-index: 2;
+}
+
+.side-bar {
+  color: colors.$text-main-color;
+  position: fixed;
+  left: 0px;
+  height: 100vh;
+  width: 3em;
+  top: 4em;
+  background-color: colors.$body-background;
+
+  & i {
+    @include font.side-bar;
+  }
+
+  .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    white-space: nowrap;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  }
+}
+
+.nav--container {
+  margin: 6em 5em;
+  position: relative;
+  height: 6vh;
+
+  .intro-name {
+    position: absolute;
+    @include font.maido;
+    color: colors.$text-main-color;
+  }
+
+  .links {
+    position: absolute;
+    right: 0%;
+    top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 1em;
+
+    i {
+      color: colors.$text-main-color;
+    }
+  }
+
+  .links a {
+    @include font.nav-links;
+    color: colors.$text-main-color;
+    text-decoration: none;
+    position: relative;
+
+    &:hover:after {
+      content: "";
+      position: absolute;
+      background: colors.$nav-dot;
+      width: 0.3em;
+      height: 0.3em;
+      right: -0.4em;
+      border-radius: 100%;
+    }
+
+    &:active:after {
+      content: "";
+      position: absolute;
+      background: colors.$nav-dot-active;
+      width: 0.3em;
+      height: 0.3em;
+      right: -0.4em;
+      border-radius: 100%;
+    }
+  }
+}
+
+
+.main__section--pinned-articles {
+  margin: 0em 4em;
+  display: grid;
+  height: 50vh;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-areas:
+    "a b c"
+    "a d e";
+  gap: 0.5em;
+  background-color: colors.$body-background;
+
+  & a:nth-child(1) {
+    $url: url("../../../Images/living-room.jpg");
+    $group: a;
+    @include article-images($url, $group);
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      transition: transform 0.2s linear;
+      transform: translateY(-0.5em);
+    }
+  }
+
+  & a:nth-child(2) {
+    $url: url("../../../Images/image2.jpg");
+    $group: b;
+    @include article-images($url, $group);
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      transition: transform 0.2s linear;
+      transform: translateY(-0.5em);
+    }
+  }
+
+  & a:nth-child(3) {
+    $url: url("../../../Images/image1.jpg");
+    @include article-images($url, c);
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      transition: transform 0.2s linear;
+      transform: translateY(-0.3em);
+    }
+  }
+
+  & a:nth-child(4) {
+    $color: rgb(142, 106, 41);
+    $group: d;
+    @include article-background($color, $group);
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      transition: transform 0.2s linear;
+      transform: translateY(-0.3em);
+    }
+  }
+
+  & a:nth-child(5) {
+    $color: rgb(141, 97, 134);
+    $group: e;
+    @include article-background($color, $group);
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      transition: transform 0.2s linear;
+      transform: translateY(-0.3em);
+    }
+  }
+}
+
+.main__section--current-articles {
+  overflow: hidden;
+  margin: 5em 10em;
+
+  .main__section--current-articles__1st-article {
+    $url: url("../../../Images/low-platform-bed.jpg");
+    @include article-images-current-article($url);
+    height: 30em;
+    border-radius: 2em;
+    position: relative;
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+
+    form:nth-of-type(2) button {
+      top: 4em;
+      left: 2em;
+
+      &:hover {
+        background-color: rgb(58, 58, 58);
+        color: colors.$text-main-color;
+      }
+    }
+
+    form:nth-of-type(1) button {
+      top: 4em;
+      left: 12.5em;
+
+      &:hover {
+        background-color: rgb(58, 58, 58);
+        color: colors.$text-main-color;
+      }
+    }
+
+    .title-current-articles {
+      @include title-layout-current-article(3em, -1em);
+
+      i {
+        opacity: 0;
+        position: absolute;
+        bottom: -0.1em;
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+
+      &:hover i {
+        opacity: 1;
+        transform: translateX(0.4em);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+    }
+
+    .author-current-articles {
+      @include author-layout-current-articles(2em);
+    }
+  }
+
+  .main__section--current-articles__2st-article {
+    margin: 2em 0em;
+    $url: url("../../../Images/home.jpg");
+    @include article-images-current-article($url);
+    height: 30em;
+    border-radius: 2em;
+    position: relative;
+
+    .background-filter {
+      backdrop-filter: invert(77%) sepia(45%) saturate(463%) hue-rotate(278deg)
+        brightness(93%) contrast(86%);
+      width: 100%;
+      height: 100%;
+    }
+
+    form:nth-of-type(2) button {
+      top: 4em;
+      left: 2em;
+
+      &:hover {
+        background-color: rgb(58, 58, 58);
+        color: colors.$text-main-color;
+      }
+    }
+
+    form:nth-of-type(1) button {
+      top: 4em;
+      left: 14em;
+
+      &:hover {
+        background-color: rgb(58, 58, 58);
+        color: colors.$text-main-color;
+      }
+    }
+
+    .title-current-articles {
+      @include title-layout-current-article(3em, -1em);
+
+      i {
+        opacity: 0;
+        position: absolute;
+        bottom: -0.1em;
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+
+      &:hover i {
+        opacity: 1;
+        transform: translateX(0.4em);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+    }
+
+    .author-current-articles {
+      @include author-layout-current-articles(2em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+
+  .main__section--current-articles__3st-article {
+    margin: 2em 0em;
+    $url: url("../../../Images/rest.jpg");
+    @include article-images-current-article($url);
+    height: 30em;
+    border-radius: 2em;
+    position: relative;
+
+    form:nth-of-type(2) button {
+      top: 4em;
+      left: 2em;
+
+      &:hover {
+        background-color: rgb(58, 58, 58);
+        color: colors.$text-main-color;
+      }
+    }
+
+    form:nth-of-type(1) button {
+      top: 4em;
+      left: 12.5em;
+
+      &:hover {
+        background-color: rgb(58, 58, 58);
+        color: colors.$text-main-color;
+      }
+    }
+
+    .title-current-articles {
+      @include title-layout-current-article(3em, -1em);
+
+      i {
+        opacity: 0;
+        position: absolute;
+        bottom: -0.1em;
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+
+      &:hover i {
+        opacity: 1;
+        transform: translateX(0.4em);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+    }
+
+    .author-current-articles {
+      @include author-layout-current-articles(2em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+
+  .main__section--current__ending {
+    @include font.title-ending;
+  }
+}
+
+.main__section--old-articles {
+  margin: 2em 10em;
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "a a a b b b"
+    "c c d d e e";
+  gap: 2em;
+  background-color: colors.$body-background;
+
+  & a:nth-child(1) {
+    $url: url("../../../Images/living-room.jpg");
+    $group: a;
+
+    @include article-images($url, $group);
+    background-position: 25% 50%;
+    position: relative;
+    background-size: 100%;
+    transition: background-size 2s;
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+
+  & a:nth-child(2) {
+    $url: url("../../../Images/rest.jpg");
+    $group: b;
+
+    @include article-images($url, $group);
+    background-position: 25% 50%;
+    position: relative;
+    background-size: 100%;
+    transition: background-size 2s;
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+
+  & a:nth-child(3) {
+    @include article-background(rgb(101, 101, 101), c);
+    background-position: 25% 50%;
+    position: relative;
+    background-size: 100%;
+    transition: background-size 2s;
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+
+  & a:nth-child(4) {
+    $color: rgb(142, 106, 41);
+    $group: d;
+    background-position: 25% 50%;
+    position: relative;
+    background-size: 100%;
+    transition: background-size 2s;
+    @include article-background($color, $group);
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+
+  & a:nth-child(5) {
+    $color: rgb(141, 97, 134);
+    $group: e;
+    @include article-background($color, $group);
+    background-position: 25% 50%;
+    position: relative;
+    background-size: 100%;
+    transition: background-size 2s;
+
+    & .pinned-container {
+      @include pinned-layout;
+    }
+
+    & .author-container {
+      @include author-layout(8em);
+    }
+
+    & .title-container {
+      @include title-layout(1em, -1em);
+    }
+
+    &:hover {
+      background-size: 110%;
+      transition: background-size 2s;
+    }
+  }
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 2em 5em;
+  margin-bottom: 0.1em;
+
+  .footer__links__social{
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 1em;
+    margin: 0 2em;
+    width: 100%;
+    i {
+      color: colors.$text-main-color;
+
+      &:hover{
+        color: rgb(238, 179, 70);
+      }
+    }
+
+  }
+
+  .footer__links__pages {
+    display: flex;
+    white-space: nowrap;
+    column-gap: 1em;
+    align-items: center;
+    justify-content: flex-start;
+
+    a {
+      @include font.nav-links;
+      color: colors.$text-main-color;
+      text-decoration: none;
+      position: relative;
+
+
+      &:hover:after {
+        content: "";
+        position: absolute;
+        background: colors.$nav-dot;
+        width: 0.3em;
+        height: 0.3em;
+        right: -0.4em;
+        border-radius: 100%;
+      }
+
+      &:active:after {
+        content: "";
+        position: absolute;
+        background: colors.$nav-dot-active;
+        width: 0.3em;
+        height: 0.3em;
+        right: -0.4em;
+        border-radius: 100%;
+      }
+    }
+  }
+}
+
+.footer__copyright{
+  margin: 1em 7em;
+  margin-bottom: 3em;
+  color: white;
+  font-size: 0.7em;
+}
