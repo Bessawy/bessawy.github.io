@@ -1,0 +1,55 @@
+body{
+  background-color: rgb(203, 196, 187);
+}
+
+.search-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+#search{
+  width: 20vw;
+  background-color: white;
+  border: 0.2em solid black;
+  border-radius: 0.5em 0.5em;
+  text-align: center;
+}
+
+#buttn{
+  background-color: black;
+  color: white;
+  border: 0.2em solid black;
+  border-radius: 0.5em 0.5em;
+}
+
+#buttn:active{
+  transform: translateY(0.1em);  
+}
+
+.countries-grid{
+  margin: 2em 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.countries-grid .country{
+  background-color: rgb(200, 188, 173);
+  border: 0.2em solid black;
+  border-radius: 0.5em 0.5em;
+  height: 4em;
+  overflow: hidden;
+  text-align: center;
+  font-weight: 500;
+  margin: 0em 0.3em;
+}
+
+.country-name{
+  vertical-align: super;
+  width: 100%;
+  height: 100%;
+}
+
+.hide {
+  display: none;
+}
