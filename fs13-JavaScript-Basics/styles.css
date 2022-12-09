@@ -7,7 +7,7 @@ body{
   justify-content: center;
 }
 
-#search{
+#filter , #search{
   width: 20vw;
   background-color: white;
   border: 0.2em solid black;
@@ -33,21 +33,38 @@ body{
   gap: 1em;
 }
 
-.countries-grid .country{
+.country{
   background-color: rgb(200, 188, 173);
   border: 0.2em solid black;
   border-radius: 0.5em 0.5em;
-  height: 4em;
-  overflow: hidden;
+  height: 6em;
+  overflow: auto;
   text-align: center;
   font-weight: 500;
   margin: 0em 0.3em;
 }
 
-.country-name{
-  vertical-align: super;
+.country__region__name ,.country__capital__name{
+  display: inline;
+}
+
+h1{
+  text-align: center;
+}
+
+hr{
+  margin: 2em 0em;
+  border: 0.1em solid;
+}
+
+.country__name{
+  font-weight: 600;
   width: 100%;
-  height: 100%;
+  margin-bottom: 0.5em;
+}
+
+.single-country-contaienr{
+  margin: 2em 2em;
 }
 
 .hide {

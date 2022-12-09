@@ -11,15 +11,53 @@
   <body>
     <template data-country-template>
       <div class="country">
-        <div class="country-name" country-name></div>
+        <div class="country__name" country-name></div>
+        <div class="country__region">
+          <b class="country__region__label" country__region__label></b>
+          <div class="country__region__name" country__region__name></div>
+        </div>
+        <div class="country__capital">
+          <b class="country__capital__label" country__capital__label></b>
+          <div class="country__capital__name" country__capital__name></div>
+        </div>
       </div>
     </template>
-    <div class="search-wrapper">
+    <h1> Single Country Section</h1>
+    <hr>
+     <div class="search-wrapper">
       <form action="" onsubmit="getSingleCountry(); return false">
         <label for="search"></label>
         <input
           type="search"
           id="search"
+          placeholder="Search Country"
+          data-search
+        />
+        <input type="submit" id="buttn" value="Search" />
+      </form>
+    </div>
+    <div class="single-country-contaienr" single-country-contaienr>
+      <div class="country">
+        <div class="country__name" country-name></div>
+        <div class="country__region">
+          <b class="country__region__label" country__region__label></b>
+          <div class="country__region__name" country__region__name></div>
+        </div>
+        <div class="country__capital">
+          <b class="country__capital__label" country__capital__label></b>
+          <div class="country__capital__name" country__capital__name></div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h1> All Countries Section</h1>
+    <hr>
+    <div class="search-wrapper">
+      <form action="" onsubmit="filterCountries(); return false">
+        <label for="filter"></label>
+        <input
+          type="search"
+          id="filter"
           placeholder="Search Country"
           data-search
         />

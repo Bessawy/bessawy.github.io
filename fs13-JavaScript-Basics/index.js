@@ -91,32 +91,62 @@ const counter = (from, to) => {
 const timer = counter();
 console.log(timer);
 
-
 const CountryTemplate = document.querySelector("[data-country-template]");
 const CountryContainer = document.querySelector("[country-container]");
-const searchInput = document.querySelector("[data-search]")
-
+const searchInput = document.querySelector("[data-search]");
 let countries = [];
 
-const getSingleCountry = () => {
+const filterCountries = () => {
   /* provide your code here */
-  const value = document.getElementById("search").value.toLowerCase()
-  countries.forEach(country => {
-    const isVisible =
-    country.name.toLowerCase().includes(value)
-    country.element.classList.toggle("hide", !isVisible)
-  })
+  const value = document.getElementById("filter").value.toLowerCase();
+  countries.forEach((country) => {
+    const isVisible = country.name.toLowerCase().includes(value);
+    country.element.classList.toggle("hide", !isVisible);
+  });
 
   return false;
-}
+};
 
+const container = document.querySelector("[single-country-contaienr]");
+const header = container.querySelector("[country-name]");
+const region_label = container.querySelector("[country__region__label]");
+const region_name = container.querySelector("[country__region__name]");
+const capital_label = container.querySelector("[country__capital__label]");
+const capital_name = container.querySelector("[country__capital__name]");
 
+region_label.textContent = "Region: ";
+region_name.textContent = "??";
+capital_label.textContent = "Capital: ";
+capital_name.textContent = "??";
+header.textContent = "?????";
+
+const getSingleCountry = () => {
+  //--- take the first country found, otherwise give nothing.
+  const value = document.getElementById("search").value;
+  fetch("https://restcountries.com/v3.1/name/" + value)
+    .then((res) => res.json())
+    .then((country) => {
+      region_label.textContent = "Region: ";
+      region_name.textContent = country[0].region;
+      capital_label.textContent = "Capital: ";
+      capital_name.textContent = country[0].capital;
+      header.textContent = country[0].name.official;
+    })
+    .catch((error) => {
+      region_label.textContent = "Region: ";
+      region_name.textContent = "??";
+      capital_label.textContent = "Capital: ";
+      capital_name.textContent = "??";
+      header.textContent = "?????";
+    });
+
+  return false;
+};
 
 const getAllCountries = () => {
   fetch("https://restcountries.com/v3.1/all")
     .then((res) => res.json())
     .then((data) => {
-
       sorted_countries = data.sort(function (a, b) {
         if (a.name.official < b.name.official) {
           return -1;
@@ -130,6 +160,14 @@ const getAllCountries = () => {
       countries = sorted_countries.map((country) => {
         const card = CountryTemplate.content.cloneNode(true).children[0];
         const header = card.querySelector("[country-name]");
+        const region_label = card.querySelector("[country__region__label]");
+        const region_name = card.querySelector("[country__region__name]");
+        const capital_label = card.querySelector("[country__capital__label]");
+        const capital_name = card.querySelector("[country__capital__name]");
+        region_label.textContent = "Region: ";
+        region_name.textContent = country.region;
+        capital_label.textContent = "Capital: ";
+        capital_name.textContent = country.capital;
         header.textContent = country.name.official;
         CountryContainer.append(card);
         return { name: country.name.official, element: card };
